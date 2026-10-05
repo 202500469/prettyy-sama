@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>prettyy - My Everything ❤️</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Alexandria, Tajawal, Amiri, Cairo, Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;600;700;800;900&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,600;1,600&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pretty: {
+                            bg: '#FAF4F0',
+                            cardBg: 'rgba(255, 255, 255, 0.82)',
+                            roseLight: '#FBE8E7',
+                            rose: '#E58A9F',
+                            deepRose: '#C84B68',
+                            gold: '#D8A868',
+                            darkText: '#3D282E',
+                            mutedText: '#7A6268'
+                        }
+                    },
+                    fontFamily: {
+                        alexandria: ['Alexandria', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif'],
+                        amiri: ['Amiri', 'serif'],
+                        cairo: ['Cairo', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Alexandria', 'Tajawal', sans-serif;
+            background-color: #FAF4F0;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(229, 138, 159, 0.18) 0px, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(200, 75, 104, 0.12) 0px, transparent 50%),
+                radial-gradient(circle at 50% 40%, rgba(216, 168, 104, 0.1) 0px, transparent 60%);
+            background-attachment: fixed;
+            color: #3D282E;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Ultra Soft Organic Floating Cards */
+        .organic-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.95);
+            border-radius: 42px;
+            box-shadow: 0 20px 40px -15px rgba(200, 75, 104, 0.12), 0 0 20px rgba(255, 255, 255, 0.8) inset;
+        }
+
+        .pill-shape {
+            border-radius: 9999px;
+        }
+
+        /* Continuous Floating Weightless Motion */
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-9px) rotate(0.5deg); }
+        }
+
+        @keyframes gentleFloatAlt {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-7px) rotate(-0.5deg); }
+        }
+
+        .float-motion {
+            animation: gentleFloat 5s ease-in-out infinite;
+        }
+
+        .float-motion-alt {
+            animation: gentleFloatAlt 6s ease-in-out infinite;
+        }
+
+        /* Heart Beat Pulse */
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(200, 75, 104, 0.35); }
+            50% { transform: scale(1.1); box-shadow: 0 0 35px rgba(200, 75, 104, 0.7); }
+        }
+
+        .pulse-seal {
+            animation: heartPulse 2.2s infinite ease-in-out;
+        }
+
+        /* Smooth Scroll Reveal Animations */
+        .reveal-box {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-box.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Floating Touch Heart Particle */
+        .floating-heart {
+            position: absolute;
+            pointer-events: none;
+            z-index: 100;
+            animation: floatUpAndFade 2.2s ease-out forwards;
+        }
+
+        @keyframes floatUpAndFade {
+            0% { opacity: 1; transform: translateY(0) scale(0.7) rotate(0deg); }
+            100% { opacity: 0; transform: translateY(-130px) scale(1.4) rotate(25deg); }
+        }
+
+        /* Clean Hide Scrollbars */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+
+<body class="min-h-screen flex justify-center items-center p-0 md:p-6 select-none">
+
+    <div class="w-full max-w-md h-screen md:h-[890px] md:rounded-[55px] bg-pretty-bg/95 shadow-2xl relative overflow-hidden flex flex-col border-0 md:border-8 border-white">
+
+        <!-- ================= FIRST SCREEN / LOCK ENVELOPE ================= -->
+        <div id="lockScreen" class="absolute inset-0 z-50 flex flex-col items-center justify-between p-6 bg-gradient-to-b from-[#FAF4F0] via-[#F8E8E6] to-[#FAF4F0] transition-all duration-700">
+            
+            <!-- Floating Sparkles -->
+            <div class="absolute top-10 left-8 text-pretty-rose animate-pulse text-lg">✨</div>
+            <div class="absolute top-20 right-10 text-pretty-deepRose animate-bounce text-sm">💖</div>
+            <div class="absolute bottom-20 left-10 text-pretty-gold text-xs">⭐</div>
+
+            <!-- Lock Envelope Header -->
+            <div class="w-full flex flex-col items-center pt-6 z-10">
+                <!-- Brand Pill -->
+                <div class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-5 py-2 rounded-full border border-white/80 shadow-sm mb-6">
+                    <span class="text-xs font-bold text-pretty-deepRose tracking-widest font-alexandria">prettyy.app</span>
+                    <span class="text-xs">✨</span>
+                </div>
+
+                <!-- Floating Envelope Card -->
+                <div class="w-full organic-card p-8 text-center relative overflow-hidden float-motion">
+                    <div class="absolute -top-12 -right-12 w-32 h-32 bg-pretty-rose/20 rounded-full blur-2xl"></div>
+                    
+                    <span class="font-playfair text-xl text-pretty-rose font-bold block mb-1 tracking-wider">PRETTYY</span>
+                    <h1 class="text-2xl font-black text-pretty-darkText flex items-center justify-center gap-2 mb-6 font-alexandria">
+                        My Everything <span class="text-pretty-deepRose animate-pulse">❤️</span>
+                    </h1>
+
+                    <!-- Wax Seal Pulsing Heart -->
+                    <div class="relative my-4 flex justify-center items-center">
+                        <div onclick="unlockWebsite()" class="w-20 h-20 rounded-full bg-gradient-to-tr from-pretty-deepRose via-rose-500 to-pretty-rose flex items-center justify-center cursor-pointer pulse-seal text-white shadow-xl z-10 group transition-transform">
+                            <i class="fa-solid fa-heart text-3xl group-hover:scale-125 transition-transform"></i>
+                        </div>
+                        <div class="absolute w-28 h-28 rounded-full border border-dashed border-pretty-rose/40 animate-spin" style="animation-duration: 16s;"></div>
+                    </div>
+
+                    <p class="text-xs font-bold text-pretty-mutedText mt-6 leading-relaxed font-tajawal">
+                        اضغطي على القلب أو ادخلي كلمة السر لفتح الهدية 💌
+                    </p>
+                </div>
+            </div>
+
+            <!-- Password Container -->
+            <div class="w-full max-w-xs z-10 flex flex-col items-center gap-3 my-auto">
+                <div class="flex items-center gap-2 mb-1">
+                    <i class="fa-solid fa-lock text-pretty-deepRose text-xs"></i>
+                    <span class="text-[11px] font-black text-pretty-deepRose tracking-widest uppercase font-alexandria">ENTER THE SECRET WORD</span>
+                </div>
+                
+                <div class="relative w-full">
+                    <input type="password" id="passcodeInput" placeholder="• password •" 
+                        class="w-full px-6 py-4 rounded-full text-center bg-white/90 border-2 border-pretty-rose/30 focus:border-pretty-deepRose focus:outline-none text-pretty-darkText font-black placeholder-pretty-rose/50 shadow-inner tracking-widest text-lg transition-all"
+                        onkeypress="if(event.key==='Enter') unlockWebsite()">
+                </div>
+                
+                <button onclick="unlockWebsite()" 
+                    class="w-full py-4 px-6 rounded-full bg-gradient-to-r from-pretty-deepRose via-rose-500 to-pretty-rose text-white font-bold text-base shadow-lg hover:shadow-xl active:scale-95 transition-all flex items-center justify-center gap-2 group font-tajawal">
+                    <span>افتحي الهدية</span> 
+                    <span class="group-hover:translate-x-[-4px] transition-transform">🔓✨</span>
+                </button>
+                
+                <p id="errorMsg" class="text-xs text-pretty-deepRose font-bold h-4 transition-all opacity-0 font-tajawal">كلمة السر غير صحيحة! (الباسورد: love)</p>
+            </div>
+
+            <div class="pb-2 text-center text-xs text-pretty-mutedText font-medium font-tajawal">
+                تصميم بحب خصيصاً لـ prettyy ❤️
+            </div>
+        </div>
+
+        <!-- ================= MAIN SCROLLABLE VERTICAL FEED ================= -->
+        <div id="mainContent" class="hidden flex-1 overflow-y-auto no-scrollbar pb-32 pt-4 px-4 scroll-smooth">
+
+            <!-- Sticky Date Pill Header -->
+            <div class="text-center py-2 sticky top-0 z-30 mb-5">
+                <span class="text-xs font-bold text-pretty-deepRose bg-white/90 backdrop-blur-md px-5 py-2 rounded-full shadow-sm border border-pretty-rose/30 font-alexandria">
+                    ✨ 2025-10-03 ✨
+                </span>
+            </div>
+
+            <!-- Feed Content Stack -->
+            <div class="space-y-7">
+
+                <!-- 1. Intro Card -->
+                <div class="reveal-box organic-card p-7 text-center space-y-4 float-motion">
+                    <div class="w-12 h-12 rounded-full bg-pretty-roseLight text-pretty-deepRose flex items-center justify-center mx-auto text-xl shadow-inner">
+                        💌
+                    </div>
+                    <p class="text-base leading-loose font-bold text-pretty-darkText font-tajawal px-1">
+                         نور عيني حبيت اعملك الموقع ده علشان بحبك حاجة كريتف بقي 😍❤️ <span class="text-pretty-deepRose font-alexandria">لـ حبيبتي سما</span> .. بس قبل أي حاجة عايزك تعرفي إني بحبك جداً وربنا يخليكي ليا يا قلبي 🥰❤️
+                    </p>
+                    <div class="flex justify-center text-pretty-rose text-lg animate-bounce pt-1">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+
+                <!-- 2. Live Relationship Counter Card -->
+                <div class="reveal-box organic-card p-7 text-center space-y-5 float-motion-alt">
+                    <div class="flex justify-center items-center gap-2">
+                        <span class="text-pretty-rose text-base">💕</span>
+                        <h2 class="text-2xl font-black text-pretty-darkText font-alexandria">بدايتنا سوا</h2>
+                        <span class="text-pretty-rose text-base">💕</span>
+                    </div>
+                    
+                    <div class="inline-block bg-pretty-roseLight/80 text-pretty-deepRose px-5 py-1.5 rounded-full text-xs font-bold font-tajawal">
+                        مع بعض من تاريخ <span class="font-alexandria font-bold">03.10.2025</span> ❤️
+                    </div>
+
+                    <!-- Live Timer Pills -->
+                    <div class="grid grid-cols-4 gap-2.5 dir-ltr my-2">
+                        <div class="bg-white/90 p-3.5 rounded-3xl border border-pretty-rose/20 flex flex-col items-center shadow-sm">
+                            <span id="counterDays" class="text-2xl font-black text-pretty-deepRose font-alexandria">00</span>
+                            <span class="text-[11px] text-pretty-mutedText font-bold mt-1 font-tajawal">يوم</span>
+                        </div>
+                        <div class="bg-white/90 p-3.5 rounded-3xl border border-pretty-rose/20 flex flex-col items-center shadow-sm">
+                            <span id="counterHours" class="text-2xl font-black text-pretty-deepRose font-alexandria">00</span>
+                            <span class="text-[11px] text-pretty-mutedText font-bold mt-1 font-tajawal">ساعة</span>
+                        </div>
+                        <div class="bg-white/90 p-3.5 rounded-3xl border border-pretty-rose/20 flex flex-col items-center shadow-sm">
+                            <span id="counterMinutes" class="text-2xl font-black text-pretty-deepRose font-alexandria">00</span>
+                            <span class="text-[11px] text-pretty-mutedText font-bold mt-1 font-tajawal">دقيقة</span>
+                        </div>
+                        <div class="bg-white/90 p-3.5 rounded-3xl border border-pretty-rose/20 flex flex-col items-center shadow-sm">
+                            <span id="counterSeconds" class="text-2xl font-black text-pretty-deepRose font-alexandria">00</span>
+                            <span class="text-[11px] text-pretty-mutedText font-bold mt-1 font-tajawal">ثانية</span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs font-bold text-pretty-deepRose bg-white/80 py-2.5 px-4 rounded-full border border-pretty-rose/20 font-tajawal">
+                        كل ثانية بتعدي وأنتِ جوه قلبي 💖
+                    </p>
+                </div>
+
+                <!-- 3. Memory Photo Cards Timeline -->
+
+                <!-- Memory Card 1 -->
+                <div class="reveal-box organic-card p-5 text-center space-y-4 float-motion">
+                    <div class="flex items-center justify-between px-3 text-xs font-bold text-pretty-deepRose font-tajawal">
+                        <span>يوم ما قولتك بحبك ❤️</span>
+                        <span class="text-pretty-mutedText font-alexandria">17.04.2026</span>
+                    </div>
+
+                    <div class="relative rounded-[32px] overflow-hidden shadow-md cursor-pointer group" onclick="spawnHeart(event)">
+                        <img src="pp3.jpeg" alt="prettyy memory" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex items-end justify-center pb-3">
+                            <span class="text-white text-[11px] font-bold bg-black/30 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30 font-tajawal">
+                                اضغطي على الصورة ✨
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/90 py-3 px-4 rounded-full border border-pretty-rose/20 text-sm font-bold text-pretty-darkText font-tajawal">
+                        بحبك أوي وربنا يخليكي ليا يا أحلى <span class="text-pretty-deepRose font-alexandria">prettyy</span> 💖
+                    </div>
+                </div>
+
+                <!-- Memory Card 2 -->
+                <div class="reveal-box organic-card p-5 text-center space-y-4 float-motion-alt">
+                    <div class="relative rounded-[32px] overflow-hidden shadow-md cursor-pointer group" onclick="spawnHeart(event)">
+                        <img src="pp2.jpeg" alt="prettyy memory" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+
+                    <div class="bg-white/90 py-3 px-4 rounded-full border border-pretty-rose/20 text-sm font-bold text-pretty-darkText font-tajawal">
+                        حبيت الدنيا اللي بتضحكلي معاكي على طول ✨
+                    </div>
+                </div>
+
+                <!-- Memory Card 3 -->
+                <div class="reveal-box organic-card p-5 text-center space-y-4 float-motion">
+                    <div class="relative rounded-[32px] overflow-hidden shadow-md cursor-pointer group" onclick="spawnHeart(event)">
+                        <img src="pp1.jpeg" alt="prettyy memory" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+
+                    <div class="bg-white/90 py-3 px-4 rounded-full border border-pretty-rose/20 text-sm font-bold text-pretty-darkText font-tajawal">
+                        فاكرة الهدية دي والضحكة القمر دي؟ 🧸🥰
+                    </div>
+                </div>
+
+                <!-- Memory Card 4 -->
+                <div class="reveal-box organic-card p-5 text-center space-y-4 float-motion-alt">
+                    <div class="relative rounded-[32px] overflow-hidden shadow-md cursor-pointer group" onclick="spawnHeart(event)">
+                        <img src="pp4.jpeg" alt="prettyy memory" class="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+
+                    <div class="bg-white/90 py-3 px-4 rounded-full border border-pretty-rose/20 text-sm font-bold text-pretty-darkText font-tajawal">
+                        يوم ماينسيش أبداً.. بحبك أوي 💕
+                    </div>
+                </div>
+
+                <!-- 4. Final Long Romantic Letter Box -->
+                <div class="reveal-box organic-card p-7 text-center space-y-6 float-motion">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-pretty-deepRose to-pretty-rose text-white flex items-center justify-center mx-auto text-2xl shadow-lg">
+                        💖
+                    </div>
+
+                    <h3 class="text-2xl font-black text-pretty-darkText font-amiri">رسالة من قلبي ليكي ❤️</h3>
+
+                    <div class="bg-white/90 p-6 rounded-[32px] border border-pretty-rose/20 text-right space-y-4 text-base leading-relaxed text-pretty-darkText font-tajawal shadow-inner">
+                        <p class="font-bold text-pretty-deepRose text-lg font-amiri">حبيبتي ونور عيني..</p>
+                        <p>
+                            مش عارف أبدأ منين ولا أقولك إيه، بس أحب أقولك إن وجودك في حياتي هو أجمل حاجة حصلتلي. كل يوم بيمر وأنا معاكي بيأكدلي إني اخترت صح، وإني مع الشخص الوحيد اللي بيقدر يفرحني ويفهمني من غير ما أتكلم.
+                        </p>
+                        <p>
+                            ربنا يديمك في حياتي نعمة وضحكة مابتفارقش وشي، ونفضل سوا ونعمل ذكريات وصور جديدة أحلى وأحلى طول العمر. بحبك جداً وبحب كل تفصيلة فيكي يا أحلى <span class="text-pretty-deepRose font-bold font-alexandria">سما</span> في الدنيا.
+                        </p>
+                        <div class="pt-3 border-t border-pretty-rose/20 text-center font-bold text-pretty-deepRose text-lg font-amiri">
+                            ربنا يخليكي ليا يا أغلى هدية في حياتي ❤️
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-pretty-mutedText font-bold font-tajawal">
+                        prettyy.app • Made with endless love
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= FLOATING STICKY MUSIC PLAYER ================= -->
+        <div id="musicPlayer" class="absolute bottom-5 left-5 right-5 bg-white/90 backdrop-blur-xl rounded-full p-3 border border-white shadow-2xl flex items-center justify-between z-40 float-motion">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full overflow-hidden bg-pretty-rose flex-shrink-0 border-2 border-white shadow-md relative">
+                    <img src="pp3.jpeg" alt="Music Cover" class="w-full h-full object-cover">
+                    <div id="musicSpin" class="absolute inset-0 bg-black/20 rounded-full animate-spin hidden" style="animation-duration: 4s;"></div>
+                    <audio id="audioplayer" src="Wha.mp3" preload="auto" autoplay loop></audio>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex items-center gap-1.5">
+                        <span class="text-pretty-deepRose text-xs animate-bounce">❤️</span>
+                        <span class="text-xs font-bold text-pretty-darkText font-tajawal">وانت معايا</span>
+                    </div>
+                    <div class="w-28 bg-pretty-roseLight h-1.5 rounded-full mt-1.5 overflow-hidden">
+                        <div id="audioProgressBar" class="bg-pretty-deepRose h-full w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 dir-ltr">
+                <button onclick="togglePlay()" class="w-11 h-11 rounded-full bg-pretty-deepRose text-white flex items-center justify-center shadow-lg active:scale-90 transition-transform">
+                    <i class="fa-solid fa-play text-xs ml-0.5" id="playIcon"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="bgAudio" loop preload="auto">
+        <source src="Wha.mp3?filename=romantic-guitars-112348.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const SECRET_KEY = "love";
+        const START_DATE = new Date("2025-10-03T00:00:00");
+        const audio = document.getElementById("bgAudio");
+        const playIcon = document.getElementById("playIcon");
+        const progressBar = document.getElementById("audioProgressBar");
+        let isPlaying = false;
+
+        // Unlock website & smooth switch
+        function unlockWebsite() {
+            const input = document.getElementById("passcodeInput");
+            const val = input.value.trim().toLowerCase();
+
+            if (val === SECRET_KEY || val === "" || val === "حب" || val === "prettyy") {
+                
+                // Play music immediately on user interaction
+                playAudioInstant();
+
+                const lockScreen = document.getElementById("lockScreen");
+                const mainContent = document.getElementById("mainContent");
+                
+                lockScreen.style.opacity = "0";
+                lockScreen.style.transform = "scale(0.95)";
+
+                setTimeout(() => {
+                    lockScreen.classList.add("hidden");
+                    mainContent.classList.remove("hidden");
+                    
+                    initScrollObserver();
+                    startLiveCounter();
+                }, 500);
+            } else {
+                document.getElementById("errorMsg").classList.remove("opacity-0");
+                input.classList.add("border-pretty-deepRose");
+                setTimeout(() => input.classList.remove("border-pretty-deepRose"), 1200);
+            }
+        }
+
+        // Automatic audio trigger
+        function playAudioInstant() {
+            audio.play().then(() => {
+                isPlaying = true;
+                playIcon.className = "fa-solid fa-pause text-xs";
+                document.getElementById("musicSpin").classList.remove("hidden");
+            }).catch(e => console.log("Audio playback initialized"));
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.className = "fa-solid fa-play text-xs ml-0.5";
+                document.getElementById("musicSpin").classList.add("hidden");
+                isPlaying = false;
+            } else {
+                audio.play();
+                playIcon.className = "fa-solid fa-pause text-xs";
+                document.getElementById("musicSpin").classList.remove("hidden");
+                isPlaying = true;
+            }
+        }
+
+        audio.addEventListener("timeupdate", () => {
+            if (audio.duration) {
+                progressBar.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+            }
+        });
+
+        // Scroll reveal logic
+        function initScrollObserver() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            }, {
+                root: document.getElementById("mainContent"),
+                threshold: 0.12
+            });
+
+            document.querySelectorAll(".reveal-box").forEach(item => {
+                observer.observe(item);
+            });
+        }
+
+        // Live Relationship Duration Counter
+        function startLiveCounter() {
+            function update() {
+                const now = new Date();
+                const diff = now - START_DATE;
+                if (diff < 0) return;
+
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((diff / 1000 / 60) % 60);
+                const seconds = Math.floor((diff / 1000) % 60);
+
+                document.getElementById("counterDays").innerText = String(days).padStart(2, '0');
+                document.getElementById("counterHours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("counterMinutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("counterSeconds").innerText = String(seconds).padStart(2, '0');
+            }
+            update();
+            setInterval(update, 1000);
+        }
+
+        // Tap Image Floating Heart Effect
+        function spawnHeart(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            for (let i = 0; i < 4; i++) {
+                const heart = document.createElement("div");
+                heart.className = "floating-heart text-xl";
+                heart.innerHTML = ["❤️", "💖", "💕", "✨"][Math.floor(Math.random() * 4)];
+                
+                heart.style.left = (e.clientX - rect.left + (Math.random() * 30 - 15)) + "px";
+                heart.style.top = (e.clientY - rect.top + (Math.random() * 30 - 15)) + "px";
+                
+                e.currentTarget.appendChild(heart);
+                setTimeout(() => heart.remove(), 2200);
+            }
+        }
+    </script>
+</body>
